@@ -14,9 +14,9 @@
   <p class="alert"><%= alert %></p>
 
     <% if user_signed_in? %>
-      <%= render "layouts/SignedInNavBar" %>
+      <%= render "layouts/signed_in_nav_bar" %>
     <% else %>
-      <%= render "layouts/SignedOutNavBar" %>
+      <%= render "layouts/signed_out_nav_bar" %>
     <% end %>
 
     <%= yield %>
