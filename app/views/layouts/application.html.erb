@@ -7,21 +7,11 @@
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag 'application' %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
   </head>
 
 <body>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-
-  <header class="navbar  navbar-inverse">
-    <div class="navbar-class">
-      <div class="container">
-
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
 
     <% if user_signed_in? %>
       <%= render "layouts/SignedInNavBar" %>
