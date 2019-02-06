@@ -1,8 +1,6 @@
 class Api::V1::PostsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
-  skip_before_action :verify_authenticity_token
-
   def index
     render json: Post.all.order('created_at DESC')
   end
