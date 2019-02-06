@@ -54,10 +54,10 @@ class Body extends React.Component {
   }
 
   updatePost(post){
-    let newPosts = this.state.posts.filter((p) => p.id!== post.id)
-    newPosts.push(post)
+    let newPosts = this.state.posts.filter((p) => p.id !== post.id)
+    newPosts.unshift(post)
     this.setState({
-      fruits: newPosts
+      posts: newPosts
     })
   }
 
