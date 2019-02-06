@@ -4,6 +4,8 @@ class Post extends React.Component {
       <div>
         <h1>{this.props.post.message}</h1>
         <p>{this.props.post.created_at}</p>
+        <button onClick={() =>
+          this.props.handleDelete(this.props.post.id)}>Delete</button>
       </div>
     )
   }
