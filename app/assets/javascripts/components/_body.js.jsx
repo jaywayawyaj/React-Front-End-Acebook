@@ -9,6 +9,8 @@ class Body extends React.Component {
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
     this.addNewPost = this.addNewPost.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
+    this.deletePost = this.deletePost.bind(this)
   }
 
   handleFormSubmit(message){
@@ -35,6 +37,24 @@ class Body extends React.Component {
     })
   }
 
+  handleDelete(id){
+    fetch(`http://localhost:3000/api/v1/posts/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }).then(() => {this.deletePost(id)})
+
+  }
+
+  deletePost(id) {
+    var posts = this.state.posts.filter((post) => post.id != id) 
+    this.setState({
+      posts: posts
+    })
+  }
+
   // fetches data from the API and changes the state of the component
   componentDidMount(){
     fetch('/api/v1/posts.json')
@@ -46,7 +66,7 @@ class Body extends React.Component {
     return(
       <div>
       <NewPost handleFormSubmit={this.handleFormSubmit}/>
-      <AllPosts posts={this.state.posts} />
+      <AllPosts posts={this.state.posts} handleDelete={this.handleDelete} />
       </div>
     )
   }
