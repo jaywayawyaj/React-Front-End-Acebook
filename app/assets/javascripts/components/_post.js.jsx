@@ -11,8 +11,8 @@ class Post extends React.Component {
     if(this.state.editable){
       let message = this.message.value
       let id = this.props.post.id
-      let post = {id: id, message: message}
-      console.log(this.props)
+      let created_at = this.props.post.created_at
+      let post = {id: id, message: message, created_at: created_at}
       this.props.handleUpdate(post)
     }
     this.setState({
@@ -28,7 +28,8 @@ class Post extends React.Component {
       this.props.post.message
     }/> : <h3> {
       this.props.post.message
-    }</h3>
+    } </h3>
+    // <p> {this.props.post.created_at} </p>;
 
     return(
       <div>

@@ -1,7 +1,6 @@
 const AllPosts = (props) => {
 
   var posts = props.posts.map((post) => {
-    console.log(props)
     return(
       <div key={post.id}>
         <Post post={post}
