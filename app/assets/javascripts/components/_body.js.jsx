@@ -9,10 +9,12 @@ class Body extends React.Component {
     this.addNewPost = this.addNewPost.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
     this.deletePost = this.deletePost.bind(this)
+    this.handleUpdate = this.handleUpdate.bind(this)
+    this.updatePost = this.updatePost.bind(this)
   }
 
   handleFormSubmit(message) {
-    let body = JSON.stringify({ post: {message: message } })
+    let body = JSON.stringify({ post: { message: message } })
 
     fetch('http://localhost:3000/api/v1/posts', {
       method: 'POST',
@@ -28,7 +30,7 @@ class Body extends React.Component {
 
   addNewPost(post){
     this.setState({
-      posts: this.state.posts.concat(post)
+      posts: this.state.posts.unshift(post)
     })
   }
 
@@ -36,6 +38,27 @@ class Body extends React.Component {
     fetch('/api/v1/posts.json')
     .then((response) => {return response.json()})
     .then((data) => {this.setState({ posts: data }) });
+  }
+
+  handleUpdate(post) {
+    fetch(`http://localhost:3000/api/v1/posts/${post.id}`,
+    {
+      method: 'PUT',
+      body: JSON.stringify({post: post}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then((response) => {
+      this.updatePost(post)
+    })
+  }
+
+  updatePost(post){
+    let newPosts = this.state.posts.filter((p) => p.id!== post.id)
+    newPosts.push(post)
+    this.setState({
+      fruits: newPosts
+    })
   }
 
   handleDelete(id) {
@@ -61,7 +84,9 @@ class Body extends React.Component {
     return(
       <div>
         <NewPost handleFormSubmit={this.handleFormSubmit}/>
-        <AllPosts posts={this.state.posts} handleDelete={this.handleDelete}/>
+        <AllPosts posts={this.state.posts}
+          handleDelete={this.handleDelete}
+          handleUpdate={this.handleUpdate}/>
       </div>
     )
   }
