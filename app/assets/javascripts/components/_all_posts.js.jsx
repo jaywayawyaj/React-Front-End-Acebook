@@ -1,9 +1,16 @@
-class AllPosts extends React.Component {
-  render() {
+const AllPosts = (props) => {
+
+  var posts = props.posts.map((post) => {
     return(
-      <div>
-        <h1> To do: Lists of all posts </h1>
+      <div key={post.id}>
+        <Post post={post}/>
       </div>
     )
-  }
+  })
+
+  return(
+    <div>
+      {posts}
+    </div>
+  )
 }
