@@ -1,5 +1,5 @@
 
-# AceBook [![Build Status](https://travis-ci.org/AlinaGoaga/AJAX-AceBook.svg?branch=master)](https://travis-ci.org/AlinaGoaga/AJAX-AceBook)
+# AceBook [![Build Status](https://travis-ci.org/AlinaGoaga/AJAX-AceBook.svg?branch=master)](https://travis-ci.org/AlinaGoaga/AJAX-AceBook) [![Maintainability](https://api.codeclimate.com/v1/badges/570afd4c3977248cb420/maintainability)](https://codeclimate.com/github/jaywayawyaj/React-Front-End-Acebook/maintainability)
 
 REQUIRED INSTRUCTIONS:
 
